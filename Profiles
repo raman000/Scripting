@@ -1,0 +1,15 @@
+A profile is a script that runs when PowerShell starts. You can use a profile to customize your environment to, for example, change background colors and errors and do other types of customizations. 
+PowerShell applies these changes to each new session you start.
+
+Profile types
+PowerShell supports several profile files. You can apply them at various levels, as you see here:
+
+Description             	Path
+All users,   all hosts	   $PSHOME\Profile.ps1
+All users,  current host	 $PSHOME\Microsoft.PowerShell_profile.ps1
+Current user, all hosts	     $Home[My ]Documents\PowerShell\Profile.ps1
+Current user, current host	 $Home[My ]Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+
+here are two variables here: $PSHOME and $Home.
+$PSHOME points to the installation directory for PowerShell.
+$Home is the current user's home directory.
