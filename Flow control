@@ -1,0 +1,57 @@
+Flow control refers to how your code runs in your console or script. 
+It describes the flow the code follows and how you control that flow. 
+There are various constructs available to help you control the flow. 
+
+The code can run all the statements, or only some of them. It can also repeat certain statements until it meets a certain condition.
+
+Sanitize input. 
+If you use parameters in a script, you need to ensure your parameters hold reasonable values so your script works as intended.
+Writing code to manage this process is called sanitizing input.
+
+Control execution flow. 
+The previous technique ensures you get reasonable and correct input data. This technique is more about deciding how to run code. 
+The values set can determine which group of statements runs.
+
+Iterate over data.
+Sometimes your data takes the form of an array, which is a data structure that contains many items. 
+For such data, you might need to examine each item and perform an operation for each one. Many constructs in PowerShell can help you with that process.
+
+Manage input and execution flow by using If, ElseIf, and Else
+
+You can use an If construct to determine if an expression is True or False. Depending on that determination, you might run the statement defined by the If construct. The syntax for If looks like this:If (<expression that evaluates to True or False>) 
+{
+  # Statement that runs only if the preceding expression is $True.
+}
+
+Operators
+PowerShell has two built-in parameters to determine if an expression is True or False:
+
+$True indicates that an expression is True.
+$False indicates that an expression is False.
+
+Else
+The If construct runs statements only if they evaluate to True. What if you want to handle cases where they evaluate to False? That's when you use the Else construct. If expresses "if this specific case is true, run this statement." Else doesn't take an expression. It captures all cases where the If clause evaluates to False. When If and Else are combined, the code runs the statements in one of the two constructs. Let's modify the previous code to include an Else construct:
+$Value = 3
+If ($Value -le 0) 
+{
+  Write-Host "Is negative"
+} Else {
+  Write-Host "Is Positive"
+}
+
+ElseIf
+If and Else work great to cover all the paths code can take. ElseIf is another construct that can be helpful. ElseIf is meant to be used with If. It says "the expression in this construct will be evaluated if the preceding If statement evaluates to False." Like If, ElseIf can take an expression, so it helps to think of ElseIf as a secondary If.
+# _FullyTax.ps1_
+# Possible values: 'Minor', 'Adult', 'Senior Citizen'
+$Status = 'Minor'
+If ($Status -eq 'Minor') 
+{
+  Write-Host $False
+} ElseIf ($Status -eq 'Adult') {
+  Write-Host $True
+} Else {
+  Write-Host $False
+}
+
+
+
