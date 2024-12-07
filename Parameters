@@ -1,0 +1,44 @@
+Using parameters makes your scripts flexible, because it allows users to select options or send input to the scripts. 
+You won't need to change your scripts as frequently, because in some cases you'll just need to change a parameter value.
+
+Cmdlets, functions, and scripts all accept parameters.
+Declare and use a parameter
+To declare a parameter, you need to use the keyword Param with an open and close parenthesis:
+Param()
+
+# CreateFile.ps1
+Param (
+  $Path
+)
+New-Item $Path # Creates a new file at $Path.
+Write-Host "File $Path was created"
+
+
+Use the parameter
+To call a script with a parameter, you need to provide a name and a value. Assume the above script is called CreateFile.ps1. You could call it like this:
+
+./CreateFile.ps1 -Path './newfile.txt' # File ./newfile.txt was created.
+./CreateFile.ps1 -Path './anotherfile.txt' # File ./anotherfile.txt was created.
+
+
+Select an approach
+
+Use If/Else. The If/Else construct allows you to check the value of a parameter and then decide what to do. Here's an example:
+Param(
+   $Path
+)
+If (-Not $Path -eq '') {
+   New-Item $Path
+   Write-Host "File created at path $Path"
+} Else {
+   Write-Error "Path cannot be empty"
+}
+
+Assign a type. If you assign a type to a parameter, you can say, for example, that the parameter accepts only strings, not Booleans.
+That way, the user knows what to expect. You can assign a type to a parameter by preceding it with the type enclosed in brackets:
+Param(
+   [string]$Path
+)
+
+
+
